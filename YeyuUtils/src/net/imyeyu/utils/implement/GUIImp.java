@@ -1,0 +1,36 @@
+package net.imyeyu.utils.implement;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.Enumeration;
+
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
+
+import net.imyeyu.utils.gui.Error;
+import net.imyeyu.utils.interfaces.GUI;
+
+public class GUIImp implements GUI {
+	
+	public void exception(Exception e) {
+		Error error = new Error();
+		StringWriter sw = new StringWriter();
+		e.printStackTrace(new PrintWriter(sw));
+		error.error("Exception: \n" + sw.toString());
+		error.setModal(true);
+		error.setVisible(true);
+	}
+
+	public String getSelectedByButtonGroup(ButtonGroup group) {
+		String level = "";
+		Enumeration<AbstractButton> radioBtns = group.getElements();  
+		while (radioBtns.hasMoreElements()) {  
+			AbstractButton btn = radioBtns.nextElement();  
+		    if (btn.isSelected()) {  
+		    	level = btn.getText();  
+		        break;
+		    }  
+		}
+		return level;
+	}
+}
