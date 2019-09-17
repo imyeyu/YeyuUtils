@@ -7,10 +7,17 @@ import java.util.Enumeration;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 
+import net.imyeyu.utils.gui.Debug;
 import net.imyeyu.utils.gui.Error;
 import net.imyeyu.utils.interfaces.GUI;
 
 public class GUIImp implements GUI {
+
+	public void debug(String s) {
+		Debug debug = new Debug();
+		debug.setDebug(s);
+		debug.setVisible(true);
+	}
 	
 	public void exception(Exception e) {
 		Error error = new Error();

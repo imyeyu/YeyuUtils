@@ -20,6 +20,14 @@ public interface GUI {
 	public final Color PINK = new Color(255, 122, 155);
 	
 	/**
+	 * Show debug panel
+	 * Demo: debug("test");
+	 * 
+	 * @param s debug content
+	 */
+	public void debug(String s);
+	
+	/**
 	 * Show exception gui when application has a deadly error
 	 * User can report exception or exit application
 	 * Demo: exception(new NullPointerException());
