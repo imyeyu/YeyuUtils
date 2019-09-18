@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -58,8 +57,6 @@ public class FileManagerImp implements FileManager {
 			br.close();
 			isr.close();
 			fis.close();
-		} catch (FileNotFoundException e) {
-			YeyuUtils.gui().exception(e);
 		} catch (UnsupportedEncodingException e) {
 			YeyuUtils.gui().exception(e);
 		} catch (IOException e) {

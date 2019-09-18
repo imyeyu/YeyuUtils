@@ -3,6 +3,7 @@ package net.imyeyu.utils.interfaces;
 import java.awt.Color;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
 
 /**
  * GUI interfaces
@@ -18,6 +19,17 @@ public interface GUI {
 	public final Color ORANGE = new Color(255, 153, 0);
 	public final Color GREEN = new Color(51, 153, 51);
 	public final Color PINK = new Color(255, 122, 155);
+	
+	/**
+	 * User JLabel tips
+	 * Demo: tips(label, "error", 3000, Tips.ERROR);
+	 * 
+	 * @param tips jlabel object
+	 * @param content tips content
+	 * @param time show time
+	 * @param mode show mode
+	 */
+	public void tips(JLabel tips, String content, int time, int mode);
 	
 	/**
 	 * Show debug panel

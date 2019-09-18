@@ -33,7 +33,7 @@ public interface Network {
 	 * Use user's default browser open url
 	 * Demo: openURLInBrowser("http://www.imyeyu.net");
 	 * 
-	 * @param url web site url
+	 * @param uri web site url
 	 */
 	public void openURIInBrowser(URI uri);
 	
@@ -65,6 +65,7 @@ public interface Network {
 	 * Get machine network ip, if unfind network ip, will return a local ip
 	 * 
 	 * @return ip string, likes 192.168.1.1
+	 * @throws Exception get error
 	 */
 	public String getNetworkIp() throws Exception;
 }

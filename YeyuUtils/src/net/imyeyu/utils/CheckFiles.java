@@ -24,7 +24,7 @@ public class CheckFiles extends Thread {
 	 *
 	 * When check file is folder, map value use "-1"
 	 * 
-	 * @param map
+	 * @param map files list
 	 */
 	public CheckFiles(Map<String, String> map) {
 		this.map = map;

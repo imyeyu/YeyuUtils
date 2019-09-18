@@ -6,13 +6,19 @@ import java.util.Enumeration;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
 
 import net.imyeyu.utils.gui.Debug;
 import net.imyeyu.utils.gui.Error;
+import net.imyeyu.utils.gui.Tips;
 import net.imyeyu.utils.interfaces.GUI;
 
 public class GUIImp implements GUI {
 
+	public void tips(JLabel tips, String content, int time, int mode) {
+		new Tips(tips, content, time, mode).start();
+	}
+	
 	public void debug(String s) {
 		Debug debug = new Debug();
 		debug.setDebug(s);

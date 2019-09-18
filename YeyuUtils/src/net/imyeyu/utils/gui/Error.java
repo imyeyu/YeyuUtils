@@ -60,7 +60,7 @@ public class Error extends JDialog implements ActionListener {
 		title.setBorder(new EmptyBorder(10, 0, 0, 0));
 		main.add(title, BorderLayout.NORTH);
 
-		JLabel label = new JLabel("错误");
+		JLabel label = new JLabel("\u9519\u8bef");
 		label.setIcon(new ImageIcon(Error.class.getResource("/net/imyeyu/utils/res/img/error.png")));
 		GroupLayout gl_title = new GroupLayout(title);
 		gl_title.setHorizontalGroup(gl_title.createParallelGroup(Alignment.LEADING).addGroup(gl_title
@@ -84,7 +84,7 @@ public class Error extends JDialog implements ActionListener {
 		textArea = new JTextArea();
 		textArea.setTabSize(4);
 		textArea.setEditable(false);
-		textArea.setFont(new Font("Consolas", Font.PLAIN, 13));
+		textArea.setFont(new Font("Simsun", Font.BOLD, 13));
 		textArea.setBorder(new EmptyBorder(5, 5, 5, 5));
 		scrollPane.setViewportView(textArea);
 		info.setLayout(gl_info);
@@ -93,10 +93,10 @@ public class Error extends JDialog implements ActionListener {
 		btn.setBorder(new EmptyBorder(0, 0, 10, 0));
 		main.add(btn, BorderLayout.SOUTH);
 
-		exit = new JButton("退出");
+		exit = new JButton("\u9000\u51fa");
 		exit.addActionListener(this);
 
-		report = new JButton("反馈错误");
+		report = new JButton("\u53cd\u9988\u9519\u8bef");
 		report.addActionListener(this);
 		
 		GroupLayout gl_btn = new GroupLayout(btn);
@@ -139,20 +139,20 @@ public class Error extends JDialog implements ActionListener {
 					"&date=" + new SimpleDateFormat("yyyy-MM-dd H:mm:ss").format(new Date()) +
 					"&data=" + textArea.getText()
 				;
-				int i = JOptionPane.showConfirmDialog(null, "即将收集你的以下数据：\n\u3000\u3000处理器型号\n\u3000\u3000最大内存\n\u3000\u3000系统版本\n\u3000\u3000JVM 虚拟机版本\n\u3000\u3000报错代码\n\n收集这些数据仅用于完善本程序", "数据收集说明", JOptionPane.YES_NO_OPTION);
+				int i = JOptionPane.showConfirmDialog(null, "\u5373\u5c06\u6536\u96c6\u4f60\u7684\u4ee5\u4e0b\u6570\u636e\uff1a\n\u3000\u3000\u5904\u7406\u5668\u578b\u53f7\n\u3000\u3000\u6700\u5927\u5185\u5b58\n\u3000\u3000\u7cfb\u7edf\u7248\u672c\n\u3000\u3000JVM \u865a\u62df\u673a\u7248\u672c\n\u3000\u3000\u62a5\u9519\u4ee3\u7801\n\n\u6536\u96c6\u8fd9\u4e9b\u6570\u636e\u4ec5\u7528\u4e8e\u5b8c\u5584\u672c\u7a0b\u5e8f", "\u6570\u636e\u6536\u96c6\u8bf4\u660e", JOptionPane.YES_NO_OPTION);
 				if (i == JOptionPane.YES_OPTION) {
 					YeyuUtils.network().sendPost("https://www.imyeyu.net/java/report", param);
-					JOptionPane.showMessageDialog(null, "反馈成功，感谢提交", "", JOptionPane.DEFAULT_OPTION);
+					JOptionPane.showMessageDialog(null, "\u53cd\u9988\u6210\u529f\uff0c\u611f\u8c22\u63d0\u4ea4", "", JOptionPane.DEFAULT_OPTION);
 					System.exit(0);
 				}
 			} catch (ConnectException e) {
-				JOptionPane.showMessageDialog(null, "反馈失败：无法连接反馈服务器_CONNECT_ECX", "", JOptionPane.DEFAULT_OPTION);
+				JOptionPane.showMessageDialog(null, "\u53cd\u9988\u5931\u8d25\uff1a\u65e0\u6cd5\u8fde\u63a5\u53cd\u9988\u670d\u52a1\u5668_CONNECT_ECX", "", JOptionPane.DEFAULT_OPTION);
 			} catch (UnknownHostException e) {
-				JOptionPane.showMessageDialog(null, "反馈失败：无法连接反馈服务器_HOST_ECX", "", JOptionPane.DEFAULT_OPTION);
+				JOptionPane.showMessageDialog(null, "\u53cd\u9988\u5931\u8d25\uff1a\u65e0\u6cd5\u8fde\u63a5\u53cd\u9988\u670d\u52a1\u5668_HOST_ECX", "", JOptionPane.DEFAULT_OPTION);
 			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, "反馈失败：反馈服务器异常_IO_ECX", "", JOptionPane.DEFAULT_OPTION);
+				JOptionPane.showMessageDialog(null, "\u53cd\u9988\u5931\u8d25\uff1a\u53cd\u9988\u670d\u52a1\u5668\u5f02\u5e38_IO_ECX", "", JOptionPane.DEFAULT_OPTION);
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, "反馈失败：程序异常_ECX", "", JOptionPane.DEFAULT_OPTION);
+				JOptionPane.showMessageDialog(null, "\u53cd\u9988\u5931\u8d25\uff1a\u7a0b\u5e8f\u5f02\u5e38_ECX", "", JOptionPane.DEFAULT_OPTION);
 			}
 		}
 		if (object == exit) {

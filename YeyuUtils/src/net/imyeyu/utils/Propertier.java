@@ -19,11 +19,12 @@ public class Propertier {
 	public Map<String, String> getProperties() {
 		Map<String, String> map = new HashMap<String, String>();
 		String s = YeyuUtils.file().jarFileToString("YeyuUtils.properties");
-		String[] a = s.split("\n");
-		String[] o = null;
-		for (int i = 0; i < a.length; i++) {
-			o = a[i].split("=");
-			map.put(o[0], o[1]);
+		String[] a = s.split("\r\n|[\r\n]");
+		String k, v;
+		for (int i = 0, l = a.length; i < l; i++) {
+			k = a[i].substring(0, a[i].indexOf("="));
+			v = a[i].substring(a[i].indexOf("=") + 1, a[i].length());
+			map.put(k, v);
 		}
 		return map;
 	}

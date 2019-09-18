@@ -104,8 +104,8 @@ public interface Encode {
 	
 	/**
 	 * Check char for chinese
-	 * Demo: isChinese('中');
-	 * return true
+	 * Demo: isChinese('abc');
+	 * return false
 	 * 
 	 * @param data char
 	 * @return true for is chinese, else for not
