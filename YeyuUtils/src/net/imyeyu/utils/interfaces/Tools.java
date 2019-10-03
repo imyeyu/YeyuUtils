@@ -1,5 +1,6 @@
 package net.imyeyu.utils.interfaces;
 
+import java.io.File;
 import java.util.Map;
 
 public interface Tools {
@@ -23,6 +24,14 @@ public interface Tools {
 	 * @return random result
 	 */
 	public Map<Object, Object> randomMap(Map<Object, Object> map, int limit);
+	
+	/**
+	 * Random the file map
+	 * 
+	 * @param map map object
+	 * @return random result
+	 */
+	public Map<String, File> randomFileMap(Map<String, File> map);
 	
 	/**
 	 * Sort map by key

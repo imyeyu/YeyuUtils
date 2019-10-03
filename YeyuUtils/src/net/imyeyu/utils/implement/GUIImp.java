@@ -1,5 +1,6 @@
 package net.imyeyu.utils.implement;
 
+import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Enumeration;
@@ -10,6 +11,8 @@ import javax.swing.JLabel;
 
 import net.imyeyu.utils.gui.Debug;
 import net.imyeyu.utils.gui.Error;
+import net.imyeyu.utils.gui.ExplorerFile;
+import net.imyeyu.utils.gui.ExplorerFolder;
 import net.imyeyu.utils.gui.Tips;
 import net.imyeyu.utils.interfaces.GUI;
 
@@ -30,8 +33,31 @@ public class GUIImp implements GUI {
 		StringWriter sw = new StringWriter();
 		e.printStackTrace(new PrintWriter(sw));
 		error.error("Exception: \n" + sw.toString());
-		error.setModal(true);
 		error.setVisible(true);
+	}
+
+	public File getFileInExplorer(String path, String format) {
+		return new ExplorerFile().open(path, format);
+	}
+
+	public File getFileInExplorer(String path, boolean parent, String format) {
+		return new ExplorerFile().open(path, parent, format);
+	}
+
+	public File[] getFilesInExplorer(String path, String[] formats) {
+		return new ExplorerFile().open(path, formats);
+	}
+
+	public File[] getFilesInExplorer(String path, boolean parent, String[] formats) {
+		return new ExplorerFile().open(path, parent, formats);
+	}
+
+	public String getFolderInExplorer(String path) {
+		return new ExplorerFolder().open(path);
+	}
+
+	public String getFolderInExplorer(String path, boolean parent) {
+		return new ExplorerFolder().open(path, parent);
 	}
 
 	public String getSelectedByButtonGroup(ButtonGroup group) {

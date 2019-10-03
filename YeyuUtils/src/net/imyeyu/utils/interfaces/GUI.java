@@ -1,6 +1,7 @@
 package net.imyeyu.utils.interfaces;
 
 import java.awt.Color;
+import java.io.File;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
@@ -47,6 +48,67 @@ public interface GUI {
 	 * @param e exception
 	 */
 	public void exception(Exception e);
+	
+	/**
+	 * Get file in explorer
+	 * Demo: getFileInExplorer("C:\\", "exe");
+	 * 
+	 * @param path init open position
+	 * @param format select file format
+	 * @return file object
+	 */
+	public File getFileInExplorer(String path, String format);
+	
+	/**
+	 * Get file in explorer
+	 * Demo: getFileInExplorer("C:\\", true, "exe");
+	 * 
+	 * @param path init open position
+	 * @param parent change path to parent dir
+	 * @param format select file format
+	 * @return file object
+	 */
+	public File getFileInExplorer(String path, boolean parent, String format);
+	
+	/**
+	 * Get files in explorer
+	 * Demo: getFilesInExplorer("C:\\", formats);
+	 * 
+	 * @param path init open position
+	 * @param format select files format
+	 * @return selected files
+	 */
+	public File[] getFilesInExplorer(String path, String[] formats);
+	
+	/**
+	 * Get files in explorer
+	 * Demo: getFilesInExplorer("C://", true, formats);
+	 * 
+	 * @param path init open position
+	 * @param parent change path to parent dir
+	 * @param format select files format
+	 * @return selected files
+	 */
+	public File[] getFilesInExplorer(String path, boolean parent, String[] formats);
+	
+	/**
+	 * Select folder in explorer
+	 * Demo: getFolderInExplorer();
+	 * 
+	 * @param path init open position
+	 * @return selected folder
+	 */
+	public String getFolderInExplorer(String path);
+	
+	/**
+	 * Select folder in explorer
+	 * Demo: getFolderInExplorer();
+	 * 
+	 * @param path init open position
+	 * @param parent change path to parent dir
+	 * @return selected folder
+	 */
+	public String getFolderInExplorer(String path, boolean parent);
 	
 	/**
 	 * Get selected tag from button group

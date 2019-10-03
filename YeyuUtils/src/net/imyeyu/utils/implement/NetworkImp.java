@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 
 import net.imyeyu.utils.YeyuUtils;
 import net.imyeyu.utils.interfaces.Network;
+import net.imyeyu.utils.vo.HTTPInfo;
 
 public class NetworkImp implements Network {
 
@@ -56,6 +57,57 @@ public class NetworkImp implements Network {
 			YeyuUtils.gui().exception(e);
 		}
 		return response;
+	}
+
+	public String sendGet(String url, String param) throws UnknownHostException, ConnectException, Exception {
+		String result = "";
+		BufferedReader in = null;
+		String urlNameString = url + "?" + param;
+		URL realUrl = new URL(urlNameString);
+		URLConnection connection = realUrl.openConnection();
+		connection.setRequestProperty("accept", "*/*");
+		connection.setRequestProperty("connection", "Keep-Alive");
+		connection.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+		connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+		connection.setRequestProperty("Accept-Charset", "UTF-8");
+		connection.connect();
+		in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+		String line;
+		while ((line = in.readLine()) != null) {
+			result += line;
+		}
+		try {
+			if (in != null) { in.close(); }
+		} catch (Exception e) {
+			YeyuUtils.gui().exception(e);
+		}
+		return result;
+	}
+
+	public String sendGet(HTTPInfo http) throws UnknownHostException, ConnectException, Exception {
+		String result = "";
+		BufferedReader in = null;
+		String urlNameString = http.getUrl() + "?" + http.getParam();
+		URL realUrl = new URL(urlNameString);
+		URLConnection connection = realUrl.openConnection();
+		connection.setRequestProperty("accept", "*/*");
+		connection.setRequestProperty("connection", "Keep-Alive");
+		connection.setRequestProperty("user-agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3314.0 Safari/537.36 SE 2.X MetaSr 1.0");
+		connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+		connection.setRequestProperty("Accept-Charset", http.getCharset());
+		connection.setRequestProperty("Cookie", http.getCookie());
+		connection.connect();
+		in = new BufferedReader(new InputStreamReader(connection.getInputStream(), http.getCharset()));
+		String line;
+		while ((line = in.readLine()) != null) {
+			result += line;
+		}
+		try {
+			if (in != null) { in.close(); }
+		} catch (Exception e) {
+			YeyuUtils.gui().exception(e);
+		}
+		return result;
 	}
 
 	public void openURIInBrowser(URI uri) {

@@ -3,6 +3,7 @@ package net.imyeyu.utils.implement;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
@@ -53,6 +54,23 @@ public class ToolsImp implements Tools {
 			if (resultTemporary.size() < limit) {
 				resultTemporary.put(mapEntry.getKey(), mapEntry.getValue());
 			}
+		}
+		return resultTemporary;
+	}
+
+	public Map<String, File> randomFileMap(Map<String, File> map){
+		Map<String, File> resultTemporary = new LinkedHashMap<String, File>();
+		List<Map.Entry<String, File>> list = new ArrayList<Map.Entry<String, File>>(map.entrySet());
+		Collections.sort(list, new Comparator<Map.Entry<String, File>>(){
+			public int compare(Entry<String, File> lhs, Entry<String, File> rhs) {
+				int randomOne = (int) (Math.random() * 10);
+				int randomTwo = (int) (Math.random() * 10);
+				return randomOne - randomTwo;
+			}
+		});
+		for (int i = 0, l = list.size(); i < l; i++){
+			Map.Entry<String, File> mapEntry = list.get(i);
+			resultTemporary.put(mapEntry.getKey(), mapEntry.getValue());
 		}
 		return resultTemporary;
 	}

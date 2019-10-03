@@ -7,6 +7,8 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.UnknownHostException;
 
+import net.imyeyu.utils.vo.HTTPInfo;
+
 /**
  * Network interfaces
  * 
@@ -28,6 +30,33 @@ public interface Network {
 	 * @throws Exception code has error
 	 */
 	public String sendPost(String url, String param) throws UnknownHostException, ConnectException, Exception;
+
+	/**
+	 * Send a http get
+	 * The url must has "http" or "https"
+	 * Demo: sendGet("https://www.imyeyu.net/api", "key0=value&amp;key1=value1");
+	 * 
+	 * @param url request url
+	 * @param param request params
+	 * @return response from request server
+	 * @throws UnknownHostException request url has error
+	 * @throws ConnectException computer or server network can not connect
+	 * @throws Exception code has error
+	 */
+	public String sendGet(String url, String param) throws UnknownHostException, ConnectException, Exception;
+	
+	/**
+	 * Send a http get
+	 * The url must has "http" or "https"
+	 * Demo: sendGet(http);
+	 * 
+	 * @param url http info object
+	 * @return response from request server
+	 * @throws UnknownHostException request url has error
+	 * @throws ConnectException computer or server network can not connect
+	 * @throws Exception code has error
+	 */
+	public String sendGet(HTTPInfo http) throws UnknownHostException, ConnectException, Exception;
 	
 	/**
 	 * Use user's default browser open url

@@ -11,6 +11,9 @@ import java.util.Map;
  */
 public class CheckFiles extends Thread {
 	
+	private static final String FOLDER = "-1";
+	private static final String JAR_FILE = "-2";
+	
 	private Map<String, String> map;
 
 	/**
@@ -23,6 +26,8 @@ public class CheckFiles extends Thread {
 	 * map.put("folder", "-1");
 	 *
 	 * When check file is folder, map value use "-1"
+	 * When check file init data is in jar, map value use "-2",
+	 * And key format: map.put("net/imyeyu/utils/res/img.png$imgs/img.png", "-2")
 	 * 
 	 * @param map files list
 	 */
@@ -33,14 +38,27 @@ public class CheckFiles extends Thread {
 	public void run() {
 		try {
 			File file;
+			String[] jarToDiskKV;
+			for (Map.Entry<String, String> item : map.entrySet()) {
+				if (item.getValue().equals(FOLDER)) {
+					file = new File(item.getKey());
+					file.mkdirs();
+				}
+			}
 			for (Map.Entry<String, String> item : map.entrySet()) {
 				file = new File(item.getKey());
-				if (item.getValue().toString().equals("-1")) {
-					file.mkdirs();
-				} else {
-					if (!file.exists()) {
-						YeyuUtils.file().stringToFile(file, item.getValue());
-					}
+				switch (item.getValue()) {
+					case JAR_FILE:
+						jarToDiskKV = item.getKey().split("\\$");
+						if (!new File(jarToDiskKV[1]).exists()) {
+							YeyuUtils.file().jarFileToDisk(jarToDiskKV[0], jarToDiskKV[1]);
+						}
+						break;
+					default:
+						if (!file.exists()) {
+							YeyuUtils.file().stringToFile(file, item.getValue());
+						}
+						break;
 				}
 			}
 		} catch (Exception e) {

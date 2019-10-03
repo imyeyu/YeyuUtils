@@ -58,6 +58,15 @@ public interface FileManager {
 	public String jarFileToString(String path);
 	
 	/**
+	 * Read the file in jar to write data to disk
+	 * Demo: jarFileToDisk("net/imyeyu/res/img.png", "img/img.png");
+	 * 
+	 * @param jarPath in jar file path
+	 * @param filePath to disk file
+	 */
+	public void jarFileToDisk(String jarPath, String filePath);
+	
+	/**
 	 * Hiden files (Windows os)
 	 * Demo: hidenFile(files);
 	 * 

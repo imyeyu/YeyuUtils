@@ -16,7 +16,7 @@ import net.imyeyu.utils.YeyuUtils;
 import net.imyeyu.utils.interfaces.FileManager;
 
 public class FileManagerImp implements FileManager {
-
+	
 	public String getJarAbsolutePath(Object obj) {
 		String path = obj.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
 		try {
@@ -34,7 +34,7 @@ public class FileManagerImp implements FileManager {
 
 	public String[] getDirList(File dir) {
 		if (dir.isDirectory()) {
-			File next[] = dir.listFiles();
+			File[] next = dir.listFiles();
 			String[] fileName = new String[next.length];
 			for (int i = 0, l = next.length; i < l; i++) {
 				fileName[i] = next[i].getName();
@@ -104,6 +104,21 @@ public class FileManagerImp implements FileManager {
 			YeyuUtils.gui().exception(e);
 		}
 		return sb.toString();
+	}
+	
+	public void jarFileToDisk(String jarPath, String filePath) {
+		try {
+			InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(jarPath);
+			FileOutputStream fos = new FileOutputStream(filePath);
+			byte input[] = new byte[128];
+			while (is.read(input) != -1) {
+				fos.write(input);
+			}
+			fos.close();
+			is.close();
+		} catch (IOException e) {
+			YeyuUtils.gui().exception(e);
+		}
 	}
 
 	public void hidenFile(File[] files) {

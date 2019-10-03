@@ -16,7 +16,6 @@ public class Debug extends JDialog {
 		setTitle("Debug");
 		setSize(450, 300);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(Debug.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
 		
 		JScrollPane scrollPane = new JScrollPane();
