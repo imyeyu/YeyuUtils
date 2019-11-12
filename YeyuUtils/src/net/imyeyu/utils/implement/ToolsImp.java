@@ -9,6 +9,7 @@ import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,7 @@ import net.imyeyu.utils.interfaces.Tools;
 
 public class ToolsImp implements Tools {
 
-	public String cutString(String data, int length) {
+	public String cutString(String data, int length, boolean dot) {
 		if (data.length() < length / 2) {
 			return data;
 		}
@@ -35,6 +36,9 @@ public class ToolsImp implements Tools {
 			if (count >= length) {
 				break;
 			}
+		}
+		if (dot) {
+			return (sb.toString().length() < data.length()) ? sb.append("...").toString() : data;
 		}
 		return sb.toString();
 	}
@@ -75,18 +79,44 @@ public class ToolsImp implements Tools {
 		return resultTemporary;
 	}
 
-	public Map<String, Object> sortMapByKey(Map<String, Object> map) {
+	public Map<String, Object> sortMapByStringKey(Map<String, Object> map) {
 		if (map == null || map.isEmpty()) {
 			return null;
 		}
 		class MapKeyComparator implements Comparator<String> {
-			public int compare(String str1, String str2) {
-				return str1.compareTo(str2);
+			public int compare(String str0, String str1) {
+				return str0.compareTo(str1);
 			}
 		}
 		Map<String, Object> sortMap = new TreeMap<String, Object>(new MapKeyComparator());
 		sortMap.putAll(map);
 		return sortMap;
+	}
+
+	public Map<Long, String> sortMapByLongKey(Map<Long, String> map) {
+		if (map == null || map.isEmpty()) {
+			return null;
+		}
+		class MapKeyComparator implements Comparator<Long> {
+			public int compare(Long arg0, Long arg1) {
+				return arg0.compareTo(arg1);
+			}
+		}
+		Map<Long, String> sortMap = new TreeMap<Long, String>(new MapKeyComparator());
+		sortMap.putAll(map);
+		return sortMap;
+	}
+
+	public Map<String, File> removeFileMapByKey(Map<String, File> map, List<String> list) {
+		Iterator<String> iterator = map.keySet().iterator();
+		String k;
+		while (iterator.hasNext()) {
+			k = iterator.next();
+			if (list.contains(k)) {
+				iterator.remove();
+			}
+		}
+		return map;
 	}
 
 	public int getSystemMemorySize() {

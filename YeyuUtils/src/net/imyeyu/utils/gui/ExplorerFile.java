@@ -13,14 +13,14 @@ public class ExplorerFile extends JDialog {
 	
 	public File open(String path, String formats) {
 		fileChooser = new JFileChooser(path);
-		fileChooser.setMultiSelectionEnabled(true);
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		fileChooser.showOpenDialog(this);
 		return fileChooser.getSelectedFile();
 	}
 	
 	public File open(String path, boolean parent, String formats) {
 		fileChooser = new JFileChooser(path);
-		fileChooser.setMultiSelectionEnabled(true);
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		if (parent) {
 			fileChooser.changeToParentDirectory();
 		}
@@ -30,6 +30,7 @@ public class ExplorerFile extends JDialog {
 	
 	public File[] open(String path, String[] formats) {
 		fileChooser = new JFileChooser(path);
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		setFilter(fileChooser, formats);
 		fileChooser.setMultiSelectionEnabled(true);
 		fileChooser.showOpenDialog(this);
@@ -38,6 +39,7 @@ public class ExplorerFile extends JDialog {
 	
 	public File[] open(String path, boolean parent, String[] formats) {
 		fileChooser = new JFileChooser(path);
+		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		setFilter(fileChooser, formats);
 		fileChooser.setMultiSelectionEnabled(true);
 		if (parent) {

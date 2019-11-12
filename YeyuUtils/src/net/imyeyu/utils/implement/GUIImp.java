@@ -14,18 +14,22 @@ import net.imyeyu.utils.gui.Error;
 import net.imyeyu.utils.gui.ExplorerFile;
 import net.imyeyu.utils.gui.ExplorerFolder;
 import net.imyeyu.utils.gui.Tips;
-import net.imyeyu.utils.interfaces.GUI;
+import net.imyeyu.utils.interfaces.GUIX;
 
-public class GUIImp implements GUI {
+public class GUIImp implements GUIX {
 
 	public void tips(JLabel tips, String content, int time, int mode) {
 		new Tips(tips, content, time, mode).start();
 	}
 	
 	public void debug(String s) {
-		Debug debug = new Debug();
-		debug.setDebug(s);
-		debug.setVisible(true);
+		new Thread () {
+			public void run() {
+				Debug debug = new Debug();
+				debug.setDebug(s);
+				debug.setVisible(true);
+			}
+		}.start();
 	}
 	
 	public void exception(Exception e) {
@@ -58,6 +62,14 @@ public class GUIImp implements GUI {
 
 	public String getFolderInExplorer(String path, boolean parent) {
 		return new ExplorerFolder().open(path, parent);
+	}
+
+	public File[] getFoldersInExplorer(String path) {
+		return new ExplorerFolder().opens(path);
+	}
+
+	public File[] getFoldersInExplorer(String path, boolean parent) {
+		return new ExplorerFolder().opens(path, parent);
 	}
 
 	public String getSelectedByButtonGroup(ButtonGroup group) {

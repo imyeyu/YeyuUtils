@@ -35,11 +35,13 @@ public class FileManagerImp implements FileManager {
 	public String[] getDirList(File dir) {
 		if (dir.isDirectory()) {
 			File[] next = dir.listFiles();
-			String[] fileName = new String[next.length];
-			for (int i = 0, l = next.length; i < l; i++) {
-				fileName[i] = next[i].getName();
+			if (next != null) {
+				String[] fileName = new String[next.length];
+				for (int i = 0, l = next.length; i < l; i++) {
+					fileName[i] = next[i].getName();
+				}
+				return fileName;
 			}
-			return fileName;
 		}
 		return null;
 	}

@@ -7,7 +7,7 @@ import net.imyeyu.utils.implement.NetworkImp;
 import net.imyeyu.utils.implement.ToolsImp;
 import net.imyeyu.utils.interfaces.Encode;
 import net.imyeyu.utils.interfaces.FileManager;
-import net.imyeyu.utils.interfaces.GUI;
+import net.imyeyu.utils.interfaces.GUIX;
 import net.imyeyu.utils.interfaces.Network;
 import net.imyeyu.utils.interfaces.Tools;
 
@@ -44,7 +44,7 @@ public class YeyuUtils {
 	 * 
 	 * @return GUI interface
 	 */
-	public static GUI gui() {
+	public static GUIX gui() {
 		return new GUIImp();
 	}
 	

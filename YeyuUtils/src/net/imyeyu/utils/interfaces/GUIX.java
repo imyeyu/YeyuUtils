@@ -12,7 +12,7 @@ import javax.swing.JLabel;
  * @author Yeyu
  *
  */
-public interface GUI {
+public interface GUIX {
 
 	public final Color BLACK = new Color(0, 0, 0);
 	public final Color GRAY = new Color(155, 155, 155);
@@ -93,7 +93,7 @@ public interface GUI {
 	
 	/**
 	 * Select folder in explorer
-	 * Demo: getFolderInExplorer();
+	 * Demo: getFolderInExplorer("C:\\");
 	 * 
 	 * @param path init open position
 	 * @return selected folder
@@ -102,13 +102,32 @@ public interface GUI {
 	
 	/**
 	 * Select folder in explorer
-	 * Demo: getFolderInExplorer();
+	 * Demo: getFolderInExplorer("C:\\", true);
 	 * 
 	 * @param path init open position
 	 * @param parent change path to parent dir
 	 * @return selected folder
 	 */
 	public String getFolderInExplorer(String path, boolean parent);
+	
+	/**
+	 * Select folders in explorer
+	 * Demo: getFoldersInExplorer("C:\\");
+	 * 
+	 * @param path init open position
+	 * @return selected folders
+	 */
+	public File[] getFoldersInExplorer(String path);
+	
+	/**
+	 * Select folders in explorer
+	 * Demo: getFoldersInExplorer("C:\\", true);
+	 * 
+	 * @param path init open position
+	 * @param parent change path to parent dir
+	 * @return selected folders
+	 */
+	public File[] getFoldersInExplorer(String path, boolean parent);
 	
 	/**
 	 * Get selected tag from button group

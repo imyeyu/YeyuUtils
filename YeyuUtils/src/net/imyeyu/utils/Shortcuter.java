@@ -13,16 +13,20 @@ import java.util.Set;
 
 /**
  * @author 逛奔的蜗牛
- *         {@link http://www.cppblog.com/biao/archive/2010/01/31/106859.html}
+ * @link http://www.cppblog.com/biao/archive/2010/01/31/106859.html
  *
  */
 public class Shortcuter implements AWTEventListener {
+	
 	// 使用单态模式
 	private static Shortcuter instance = new Shortcuter();
+	
 	// 快捷键与事件处理对象键值对
 	private Map<String, ShortcutListener> listeners;
+	
 	// 某组件上发生了快捷键列表中的快捷键事件, 如果他的父组件在被忽略组件列表中, 则放弃这个事件.
 	private Set<Component> ignoredComponents;
+	
 	// 保存键盘上键与它的ascii码对应
 	// 如果以某键的ascii码为下标, 数组中此下标的值为true, 说明此键被按下了.
 	// 当此键被释放开后, 数组中对应的值修改为false
@@ -71,6 +75,7 @@ public class Shortcuter implements AWTEventListener {
 
 	/**
 	 * 查找此快捷键事件是否要被抛弃
+	 * 
 	 * @param event
 	 * @return
 	 */

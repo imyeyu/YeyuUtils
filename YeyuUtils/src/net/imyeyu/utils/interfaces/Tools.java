@@ -1,6 +1,7 @@
 package net.imyeyu.utils.interfaces;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 public interface Tools {
@@ -12,9 +13,10 @@ public interface Tools {
 	 * 
 	 * @param data text
 	 * @param length cut length
+	 * @param dot string last has "..." for set true, else or noting
 	 * @return cut result
 	 */
-	public String cutString(String data, int length);
+	public String cutString(String data, int length, boolean dot);
 	
 	/**
 	 * Random the map
@@ -34,12 +36,29 @@ public interface Tools {
 	public Map<String, File> randomFileMap(Map<String, File> map);
 	
 	/**
-	 * Sort map by key
+	 * Sort map by string key
 	 * 
 	 * @param map map object
 	 * @return sort result
 	 */
-	public Map<String, Object> sortMapByKey(Map<String, Object> map);
+	public Map<String, Object> sortMapByStringKey(Map<String, Object> map);
+	
+	/**
+	 * Sort map by long key
+	 * 
+	 * @param map map object
+	 * @return sort result
+	 */
+	public Map<Long, String> sortMapByLongKey(Map<Long, String> map);
+	
+	/**
+	 * Remove an item by key in file map
+	 * 
+	 * @param map remove map
+	 * @param list remove key list
+	 * @return remove result map
+	 */
+	public Map<String, File> removeFileMapByKey(Map<String, File> map, List<String> list);
 	
 	/**
 	 * Get system memory max size
