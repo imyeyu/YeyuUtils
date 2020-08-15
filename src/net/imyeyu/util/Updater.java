@@ -168,7 +168,7 @@ public class Updater extends Stage {
 	/**
 	 * 下载完成事件
 	 * 
-	 * @param event 事件对象
+	 * @param successListener 下载完成事件对象
 	 */
 	public void setOnSucceeded(ChangeListener<Boolean> successListener) {
 		if (downloader != null) downloader.valueProperty().addListener(successListener);
@@ -177,7 +177,7 @@ public class Updater extends Stage {
 	/**
 	 * 更新异常
 	 * 
-	 * @return
+	 * @return 可观察异常类
 	 */
 	public ReadOnlyObjectProperty<Throwable> exceptionProperty() {
 		return downloader.exceptionProperty();

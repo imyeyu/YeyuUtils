@@ -95,16 +95,17 @@ public interface Tools {
 	 * 从剪切板获取文本内容
 	 * 
 	 * @return 剪切板文本
+	 * @throws Exception 设置异常
 	 */
 	public String getIntoClipboard() throws Exception;
 	
 	/**
 	 * <p>格式化一个储存容量
 	 * <p>当值 等于 -1 时返回 ""
-	 * <br />当值 < 1 KB 时返回 999 B <- 值和单位有个空格
-	 * <br />当值 1 KB < 10 MB 时返回 9,999 KB
-	 * <br />当值 10 MB < value < 1GB 时返回 9,999 MB
-	 * <br />当值 1000 GB < value 时返回 1.111 TB （真的？）
+	 * 当值 &lt; 1 KB 时返回 999 B &lt;- 值和单位有个空格
+	 * 当值 1 KB &lt; 10 MB 时返回 9,999 KB
+	 * 当值 10 MB &lt; value &lt; 1GB 时返回 9,999 MB
+	 * 当值 1000 GB &lt; value 时返回 1.111 TB （真的？）
 	 * 
 	 * @param byteValue 储存长度
 	 * @param format    数值格式化，如果要插入 ',' 号，请传值 new DecimalFormat("#,###")
@@ -115,9 +116,9 @@ public interface Tools {
 	/**
 	 * <p>格式化字节数据为人看的网络速度
 	 * <p>当值 = -1 时，返回 "0"
-	 * <br />当值 < 1 KB 时，返回 999 B <- 值和单位有个空格
-	 * <br />当值 < 1.1 MB 时，返回 1,199 KB
-	 * <br />当值 > 1.1 MB 时，返回 9,999 MB
+	 * 当值 &lt; 1 KB 时，返回 999 B &lt;- 值和单位有个空格
+	 * 当值 &lt; 1.1 MB 时，返回 1,199 KB
+	 * 当值 &gt; 1.1 MB 时，返回 9,999 MB
 	 * 
 	 * @param byteValue 字节长度
 	 * @param format    数值格式化，如果要插入 ',' 号，请传值 new DecimalFormat("#,###")

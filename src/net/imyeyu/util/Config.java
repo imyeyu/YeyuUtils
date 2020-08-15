@@ -3,8 +3,8 @@ package net.imyeyu.util;
 import java.util.Map;
 
 /**
- * 配置对象，以 HashMap 储存配置，使用 get 数据类型简化 Map 的数据获取方式<br />
- * 请确保配置对象数据类型，否则有转化异常直接向 JVM 抛出
+ * <p>配置对象，以 HashMap 储存配置，使用 get 数据类型简化 Map 的数据获取方式
+ * <p>请确保配置对象数据类型，否则有转化异常直接向 JVM 抛出
  * 
  * @author Yeyu
  *
@@ -82,7 +82,7 @@ public class Config {
 	 * 获取单精度浮点型数据
 	 * 
 	 * @param key 配置键
-	 * @return
+	 * @return float
 	 */
 	public float getFloat(String key) {
 		return Float.valueOf(config.get(key).toString());
@@ -173,7 +173,7 @@ public class Config {
 	/**
 	 * 获取配置文件 HashMap
 	 * 
-	 * @return
+	 * @return HashMap 链表
 	 */
 	public Map<String, Object> getConfig() {
 		return config;
@@ -182,7 +182,7 @@ public class Config {
 	/**
 	 * 设置配置文件 HashMap
 	 * 
-	 * @param config
+	 * @param config HashMap 链表
 	 */
 	public void setConfig(Map<String, Object> config) {
 		this.config = config;

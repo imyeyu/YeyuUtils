@@ -93,7 +93,7 @@ public interface Encode {
 	public boolean isNumber(String data);
 	
 	/**
-	 * <p>是否为半角字符<br />
+	 * <p>是否为半角字符
 	 * <p>示例: isHalfChar('a');
 	 * 
 	 * @param  data 字符

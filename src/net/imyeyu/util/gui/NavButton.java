@@ -32,7 +32,7 @@ public class NavButton extends Button {
 	/**
 	 * 设置颜色，顺序未默认，进入，点击
 	 * 
-	 * @param colors
+	 * @param colors 颜色
 	 */
 	public void setColor(String... colors) {
 		colorDefault = colors[0];

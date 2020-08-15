@@ -109,6 +109,7 @@ public class Configer {
 	 * <p>从现成的配置文件获取配置对象
 	 * 
 	 * @return 配置对象
+	 * @throws ConfigurationException 配置异常
 	 */
 	public Config get() throws ConfigurationException {
 		configDEF = getDefault();
@@ -131,8 +132,7 @@ public class Configer {
 	/**
 	 * 导出 Jar 内部默认配置以重置配置
 	 * 
-	 * @param jarFile                 默认文件
-	 * @throws ConfigurationException 配置异常
+	 * @return 默认配置对象
 	 */
 	public Config reset() {
 		try {

@@ -39,24 +39,24 @@ public interface Network {
 	 * @return                      请求结果
 	 * @throws UnknownHostException 未知地址
 	 * @throws ConnectException     连接失败
-	 * @throws Exception
+	 * @throws Exception            其他异常
 	 */
 	public String doGet(HTTPInfo http) throws UnknownHostException, ConnectException, Exception;
 	
 	/**
-	 * <p>发送一个不带参数的请求
+	 * <p>发送一个不带参数的 GET 请求
 	 * <p>示例: doGet("https://www.imyeyu.net/api");
 	 * 
-	 * @param url
-	 * @return
-	 * @throws UnknownHostException
-	 * @throws ConnectException
-	 * @throws Exception
+	 * @param url                   请求地址
+	 * @return                      返回结果
+	 * @throws UnknownHostException 未知地址
+	 * @throws ConnectException     连接失败
+	 * @throws Exception            其他异常
 	 */
 	public String doGet(String url) throws UnknownHostException, ConnectException, Exception;
 	
 	/**
-	 * <p>发送一个 POST 请求
+	 * <p>发送一个 GET 请求
 	 * <p>示例: doGet("https://www.imyeyu.net/api", "key0=value&amp;key1=value1");
 	 * 
 	 * @param url                   请求地址
@@ -64,7 +64,7 @@ public interface Network {
 	 * @return                      请求结果
 	 * @throws UnknownHostException 未知地址
 	 * @throws ConnectException     连接失败
-	 * @throws Exception
+	 * @throws Exception            其他异常
 	 */
 	public String doGet(String url, String param) throws UnknownHostException, ConnectException, Exception;
 	
@@ -77,7 +77,7 @@ public interface Network {
 	 * @return                      请求结果
 	 * @throws UnknownHostException 未知地址
 	 * @throws ConnectException     连接失败
-	 * @throws Exception
+	 * @throws Exception            其他异常
 	 */
 	public String doPost(String url, String param) throws UnknownHostException, ConnectException, Exception;
 	
